@@ -1,0 +1,97 @@
+<ul class="nav nav-tabs" id="myTab">
+   <li class="active"><a data-target="#destination" data-toggle="tab">Destination</a></li>
+   <li><a data-target="#hourly" data-toggle="tab">Hourly</a></li>
+</ul>
+<div class="tab-content">
+  <!-- DESTINATION -->
+   <div class="tab-pane active" id="destination">
+      <br>
+      <form novalidate name="addrForm">
+        <!-- PICK UP-->
+         <div class="{'form-group':true, 'has-error':addrForm.pickupaddress.$dirty && addrForm.pickupaddress.$invalid} col-md-12">
+            <label for="pickupaddress" class="control-label">Pickup Address</label>
+            <input vs-google-autocomplete
+                     vs-autocomplete-validator
+
+                     ng-model="addressObj.pickupaddress.name"
+                     vs-latitude="addressObj.pickupaddress.lat"
+                     vs-longitude="addressObj.pickupaddress.long"
+
+                     type="text"
+                     name="pickupaddress"
+                     id="pickupaddress"
+                     class="form-control"
+                     placeholder="Enter full address (street number, street, ...)"
+                     required="">
+
+                     <!-- validation info -->
+                     <span class="help-block"><b><u>Valid</u>: </b>{{addrForm.pickupaddress.$valid}}</span>
+                    <!-- model -->
+                    <span class="help-block"><b>Model: </b>{{addressObj.pickupaddress.name}}</span>
+                    <span class="help-block"><b>Latitude: </b>{{addressObj.pickupaddress.lat}}</span>
+                    <span class="help-block"><b>Longitude: </b>{{addressObj.pickupaddress.long}}</span>
+
+         </div>
+
+        <!-- DROP OFF -->
+        <div class="{'form-group':true, 'has-error':addrForm.dropoffAddress.$dirty && addrForm.dropoffAddress.$invalid} col-md-12">
+          <label for="dropoffAddress" class="control-label">Drop Off Address</label>
+          <input vs-google-autocomplete="{ types: ['address'] }"
+                   vs-autocomplete-validator="vs-street-address"
+
+                   ng-model="addressObj.dropoffaddress.name"
+                   vs-latitude="addressObj.dropoffaddress.lat"
+                   vs-longitude="addressObj.dropoffaddress.long"
+
+                   type="text"
+                   name="dropoffAddress"
+                   id="dropoffAddress"
+                   class="form-control"
+                   placeholder="Enter full address (street number, street, ...)">
+
+                   <!-- validation info -->
+                   <span class="help-block"><b><u>Valid</u>: </b>{{addrForm.dropoffAddress.$valid}}</span>
+
+                  <!-- model -->
+                  <span class="help-block"><b>Model: </b>{{addressObj.dropoffaddress.name}}</span>
+                  <span class="help-block"><b>Latitude: </b>{{addressObj.dropoffaddress.lat}}</span>
+                  <span class="help-block"><b>Longitude: </b>{{addressObj.dropoffaddress.long}}</span>
+
+         </div>
+         <div class="form-group col-md-6">
+            <label for="passengers">Passengers</label>
+            <select class="form-control" id="passengers">
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+               <option value="7">7</option>
+               <option value="8">8</option>
+               <option value="9">9</option>
+               <option value="10">10</option>
+               <option value="11">11</option>
+               <option value="12">12</option>
+            </select>
+         </div>
+         <div class="form-group col-md-6">
+            <label for="luggages">Luggages</label>
+            <!-- <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter an address"> -->
+            <select class="form-control" id="luggages">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+         </div>
+
+         <button type="submit" class="btn btn-default col-md-12" id="submit" ng-click="submit(addrForm.pickupaddress.$valid, addrForm.dropoffAddress.$valid)">Submit</button>
+      </form>
+   </div>
+
+   <!-- HOURLY -->
+   <div class="tab-pane" id="hourly">Profile</div>
+</div>
